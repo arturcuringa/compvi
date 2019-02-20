@@ -1,17 +1,16 @@
 import sys
 import cv2
+import numpy as np
+import numpy as np
 
 
 def split_channel(img):
-    r = img.copy()
-    b = img.copy()
-    g = img.copy()
-    r[:, :, 1] = 0
-    r[:, :, 0] = 0
-    g[:, :, 0] = 0
-    g[:, :, 2] = 0
-    b[:, :, 1] = 0
-    b[:, :, 2] = 0
+    r = np.zeros(img.shape, dtype=np.uint8)
+    b = np.zeros(img.shape, dtype=np.uint8)
+    g = np.zeros(img.shape, dtype=np.uint8)
+    r[:, :, 2] = img[:,:,2]
+    g[:, :, 1] = img[:,:,1]
+    b[:, :, 0] = img[:,:,0]
 
     return r, g, b
 
